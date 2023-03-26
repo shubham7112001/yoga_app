@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Screens/home_screen.dart';
+import 'Screens/start_up.dart';
 
 void main()  {
-  // await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  HomeScreen()
+      home:  StartUp()
     );
   }
 }
