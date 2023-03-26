@@ -22,6 +22,13 @@ class TextWidgets{
     );
   }
 
+  static Widget yogaForAllText({String? text}){
+    return Padding(
+      padding: const EdgeInsets.only(bottom:8,left: 8,top: 12),
+      child: Text(text ?? "Yoga For All",style: TextStyle(fontSize:16,fontFamily: 'SanFrancisco'),),
+    );
+  }
+
 
 
 }

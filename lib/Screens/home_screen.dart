@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yoga_app/widgets/home_screen_container.dart';
 
 import '../Custom App Bar/custom_app_bar.dart';
+import '../Utils/app_colors.dart';
 import '../widgets/text_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
     return  Scaffold(
       key: scaffoldKey,
       drawer: Drawer(),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.mainColor,
       body: NotificationListener(
         onNotification: scrollListener,
         child: Stack(
@@ -59,10 +60,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                           children: [
                             Container(
 
-                              padding: EdgeInsets.fromLTRB(30, 130, 50, 30),
+                              padding: EdgeInsets.fromLTRB(30, 130, 50,30),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
-                                color: Colors.blue
+                                color: AppColors.appBarColor
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -74,20 +75,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                               )
                             ),
                             Container(
-                              margin: EdgeInsets.all(10),
+                              margin: EdgeInsets.only(left: 10,right: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom:2,left: 8),
-                                    child: Text("Yoga For All",style: TextStyle(fontSize:16,fontFamily: 'SanFrancisco'),),
-                                  ),
-
+                                  TextWidgets.yogaForAllText(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  TextWidgets.yogaForAllText(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
-                                  HomeScreenContainer.homeScreenContainerInsideStack(),
-                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  TextWidgets.yogaForAllText(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),

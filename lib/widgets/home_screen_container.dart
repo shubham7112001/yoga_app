@@ -14,11 +14,11 @@ class HomeScreenContainer{
   static Widget homeScreenContainerInsideStack(
       {String? urlStr, String? upperTxt, String? lowerTxt}){
     return Container(
-      margin: EdgeInsets.only(bottom: 8),
+      margin: EdgeInsets.only(bottom: 12),
       child: Stack(
         children: [
           Container(
-            height: 150,
+            height: 160,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
@@ -28,7 +28,7 @@ class HomeScreenContainer{
             ),
           ),
           Container(
-            height: 150,
+            height: 160,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black26
