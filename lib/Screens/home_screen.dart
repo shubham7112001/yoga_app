@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yoga_app/widgets/home_screen_container.dart';
-
-import '../Custom App Bar/custom_app_bar.dart';
+import '../CustomWidgets/custom_app_bar.dart';
+import '../CustomWidgets/custom_drawer.dart';
 import '../Utils/app_colors.dart';
 import '../widgets/text_widgets.dart';
 
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return  Scaffold(
       key: scaffoldKey,
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       backgroundColor: AppColors.mainColor,
       body: NotificationListener(
         onNotification: scrollListener,
