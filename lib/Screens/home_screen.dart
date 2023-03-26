@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoga_app/widgets/home_screen_container.dart';
 
 import '../Custom App Bar/custom_app_bar.dart';
 import '../widgets/text_widgets.dart';
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                           children: [
                             Container(
 
-                              padding: EdgeInsets.fromLTRB(30, 120, 50, 30),
+                              padding: EdgeInsets.fromLTRB(30, 130, 50, 30),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
                                 color: Colors.blue
@@ -73,26 +74,24 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                               )
                             ),
                             Container(
+                              margin: EdgeInsets.all(10),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Yoga For All"),
-                                  Stack(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.all(10),
-                                        height: 150,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(20),
-                                          image: const DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                              "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIweW9nYXxlbnwwfHwwfHw%3D&w=1000&q=80"
-                                            )
-                                          )
-                                        ),
-                                      )
-                                    ],
-                                  )
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom:2,left: 8),
+                                    child: Text("Yoga For All",style: TextStyle(fontSize:16,fontFamily: 'SanFrancisco'),),
+                                  ),
+
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+
                                 ],
                               ),
                             )

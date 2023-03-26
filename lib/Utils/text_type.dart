@@ -16,7 +16,8 @@ class TextType{
        style: TextStyle(
            color: c,
            fontSize: 20,
-           fontWeight: FontWeight.bold),);
+           fontWeight: FontWeight.bold,
+       fontFamily: 'SanFrancisco'),);
    }
 
 
