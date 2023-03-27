@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yoga_app/Screens/work_out_detail.dart';
 
 import '../Utils/app_colors.dart';
 
@@ -11,7 +12,7 @@ class AreYouReady extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<TimerModel>(
-        create: (context)=>TimerModel(),
+        create: (context)=>TimerModel(context),
       child: Scaffold(
         body: Center(
           child: Container(
@@ -61,17 +62,18 @@ class AreYouReady extends StatelessWidget {
 }
 
 class TimerModel with ChangeNotifier{
-  TimerModel(){
-    MyTimer();
+  TimerModel(context){
+    MyTimer(context);
   }
   int countdown = 5;
 
-   MyTimer()async{
+   MyTimer(context)async{
      Timer.periodic(Duration(seconds: 1), (timer) {
        countdown--;
        notifyListeners();
        if(countdown == 0){
          timer.cancel();
+         Navigator.push(context, MaterialPageRoute(builder: (context) => WorkOutDetails(),));
        }
      });
    }
