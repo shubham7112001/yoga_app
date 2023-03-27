@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoga_app/Screens/start_up.dart';
 import 'package:yoga_app/widgets/home_screen_container.dart';
 import '../CustomWidgets/custom_app_bar.dart';
 import '../CustomWidgets/custom_drawer.dart';
@@ -80,7 +81,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextWidgets.yogaForAllText(),
-                                  HomeScreenContainer.homeScreenContainerInsideStack(),
+                                  InkWell(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>const StartUp())),
+                                      child: HomeScreenContainer.homeScreenContainerInsideStack(),),
+                                  
+                                  
+
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   TextWidgets.yogaForAllText(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),

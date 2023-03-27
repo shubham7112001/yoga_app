@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yoga_app/NetworkDataUrl/network_data_url.dart';
 import 'package:yoga_app/Utils/app_colors.dart';
 
+import 'are_you_ready.dart';
+
 class StartUp extends StatelessWidget {
   const StartUp({Key? key}) : super(key: key);
 
@@ -9,7 +11,9 @@ class StartUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: ElevatedButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>AreYouReady()));
+        },
         child: Container(
             padding: EdgeInsets.all(20),
             child: Text("Start",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,fontFamily: 'SanFrancisco'),)),
