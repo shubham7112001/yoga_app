@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:yoga_app/NetworkDataUrl/network_data_url.dart';
 
 import '../Utils/app_colors.dart';
+import 'break_time_screen.dart';
 
 class WorkOutDetails extends StatelessWidget {
   const WorkOutDetails({Key? key}) : super(key: key);
@@ -57,8 +58,8 @@ class WorkOutDetails extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextButton(onPressed: (){}, child: Text("Previous",style: TextStyle(fontSize: 20),)),
-                    TextButton(onPressed: (){}, child: Text("Skip",style: TextStyle(fontSize: 20),)),
+                    TextButton(onPressed: (){}, child: Text("<< Previous",style: TextStyle(fontSize: 20),)),
+                    TextButton(onPressed: (){}, child: Text("Next >>",style: TextStyle(fontSize: 20),)),
                   ],
                 ),
               ),
@@ -95,7 +96,7 @@ class _TimerModel with ChangeNotifier{
       notifyListeners();
       if(countdown == 0){
         timer.cancel();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => WorkOutDetails(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>BreakTimeScreen()));
       }
     });
   }
