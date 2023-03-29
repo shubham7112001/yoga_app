@@ -29,7 +29,7 @@ class WorkOutDetails extends StatelessWidget {
                     //GIF Container
                     Container(
                       height: 400,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         // borderRadius: BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft: Radius.circular(8)),
                         image: DecorationImage(
                           fit: BoxFit.cover,
