@@ -1,8 +1,10 @@
 class YogaModel{
+  static String YogaTable1 = "BeginnerYoga";
   static String IdName = "ID";
   static String YogaName = "YogaName";
   static String SecondsOrNot = "SecondsOrNot";
   static String ImageName = "ImageName";
+  static List<String>? YogaTable1ColumnName = [YogaModel.IdName,YogaModel.YogaName,YogaModel.SecondsOrNot,YogaModel.ImageName];
 
 }
 
