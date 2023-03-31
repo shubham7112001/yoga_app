@@ -1,5 +1,13 @@
 class YogaModel{
   static String YogaTable1 = "BeginnerYoga";
+  static String YogaTable2 = "WeightLossYoga";
+  static String YogaTable3 = "KidsYoga";
+  static String YogaSummary = "YogaSummary";
+  static String YogaWorkOutName = "YogaWorkOutName";
+  static String BackImg = "BackImg";
+  static String TimeTaken = "TimeTaken";
+  static String TotalNoOfWorkOut = "TotalNoOfWorkOut";
+
   static String IdName = "ID";
   static String YogaName = "YogaName";
   static String SecondsOrNot = "SecondsOrNot";
