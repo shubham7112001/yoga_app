@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:yoga_app/Data/models/yoga_model.dart';
+import 'package:yoga_app/Data/models/yoga_summary_model.dart';
 import 'package:yoga_app/Screens/start_up.dart';
 import 'package:yoga_app/widgets/home_screen_container.dart';
 import '../CustomWidgets/custom_app_bar.dart';
 import '../CustomWidgets/custom_drawer.dart';
 import '../Utils/app_colors.dart';
+import '../services/yoga_db.dart';
 import '../widgets/text_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +21,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   late Animation _yogaTween, _iconTween, _homeTween, _drawerTween, _colorTween;
   late AnimationController _textAnimationController;
 
+  Future makeYogaEntry(Yoga yoga,String tableName) async{
+    await YogaDatabase.instance.insert(yoga, tableName);
+  }
+
+  Future makeYogaSummaryEntry(YogaSummary yogaSummary) async{
+    await YogaDatabase.instance.insertYogaSummary(yogaSummary);
+  }
+
   @override
   void initState() {
     _animationController = AnimationController(vsync: this,duration: Duration(seconds: 0));
@@ -28,6 +39,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
     _drawerTween = ColorTween(begin: Colors.white,end: Colors.black).animate(_animationController);
     _textAnimationController = AnimationController(vsync: this,duration: Duration(seconds: 0));
     super.initState();
+
+
+    // CREATING ONE YOGA WORKOUT PACK
+    makeYogaSummaryEntry(YogaSummary(YogaWorkOutName: YogaModel.YogaTable1, BackImg: "BACKIMGURL", TimeTaken: "36", TotalNoOfWorkOut: "12"));
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl", YogaImgUrl: "Anulom Vilom"), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl1", YogaImgUrl: "KapalBhati"), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl2", YogaImgUrl: "Pranayam"), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl3", YogaImgUrl: "Shwasari"), YogaModel.YogaTable1);
+
   }
 
   bool scrollListener(ScrollNotification scrollNotification){
