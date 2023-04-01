@@ -32,6 +32,7 @@ class YogaDatabase{
     await db.execute('''
     CREATE TABLE ${YogaModel.YogaTable1}(
     ${YogaModel.IdName} $idType,
+    ${YogaModel.YogaKey} $intType,
     ${YogaModel.YogaName} $intType,
     ${YogaModel.ImageName} $textType,
     ${YogaModel.SecondsOrNot} $boolType,
@@ -62,7 +63,7 @@ class YogaDatabase{
     await db.execute('''
     CREATE TABLE ${YogaModel.YogaSummary}(
     ${YogaModel.IdName} $idType,
-    // ${YogaModel.YogaKey} $intType,
+    ${YogaModel.YogaKey} $intType,
     ${YogaModel.YogaWorkOutName} $textType,
     ${YogaModel.BackImg} $textType,
     ${YogaModel.TimeTaken} $textType,

@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
 
 
     // CREATING ONE YOGA WORKOUT PACK
-    makeYogaSummaryEntry(YogaSummary(YogaWorkOutName: YogaModel.YogaTable1, BackImg: NetworkDataUrl.defaultUrl, TimeTaken: "36", TotalNoOfWorkOut: "12"));
+    makeYogaSummaryEntry(YogaSummary(YogaWorkOutName: YogaModel.YogaTable1, BackImg: NetworkDataUrl.defaultUrl, TimeTaken: "36", TotalNoOfWorkOut: "12",yogakey: 1));
     makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "Anulom Vilom1",SecondsOrTimes: '30'), YogaModel.YogaTable1);
     makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "KapalBhati1",SecondsOrTimes: '15'), YogaModel.YogaTable1);
     makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "Pranayam1",SecondsOrTimes: '12'), YogaModel.YogaTable1);
