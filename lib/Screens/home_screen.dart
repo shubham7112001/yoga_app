@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:yoga_app/Data/models/yoga_model.dart';
 import 'package:yoga_app/Data/models/yoga_summary_model.dart';
+import 'package:yoga_app/NetworkDataUrl/network_data_url.dart';
 import 'package:yoga_app/Screens/start_up.dart';
 import 'package:yoga_app/widgets/home_screen_container.dart';
 import '../CustomWidgets/custom_app_bar.dart';
@@ -29,6 +32,24 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
     await YogaDatabase.instance.insertYogaSummary(yogaSummary);
   }
 
+  bool isLoading = true;
+  late List<YogaSummary> yogaSummaryList=[];
+  Future readYogaSummaryEntry( ) async{
+    this.yogaSummaryList = await YogaDatabase.instance.readAllYogaSummary();
+
+    setState(() {
+
+    isLoading = false;
+    });
+
+
+      log(yogaSummaryList[0].YogaWorkOutName.toString());
+
+
+
+  }
+
+
   @override
   void initState() {
     _animationController = AnimationController(vsync: this,duration: Duration(seconds: 0));
@@ -42,12 +63,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
 
 
     // CREATING ONE YOGA WORKOUT PACK
-    makeYogaSummaryEntry(YogaSummary(YogaWorkOutName: YogaModel.YogaTable1, BackImg: "BACKIMGURL", TimeTaken: "36", TotalNoOfWorkOut: "12"));
-    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl", YogaImgUrl: "Anulom Vilom"), YogaModel.YogaTable1);
-    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl1", YogaImgUrl: "KapalBhati"), YogaModel.YogaTable1);
-    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl2", YogaImgUrl: "Pranayam"), YogaModel.YogaTable1);
-    makeYogaEntry(Yoga(Seconds: true, YogaTitle: "DummyUrl3", YogaImgUrl: "Shwasari"), YogaModel.YogaTable1);
+    makeYogaSummaryEntry(YogaSummary(YogaWorkOutName: YogaModel.YogaTable1, BackImg: NetworkDataUrl.defaultUrl, TimeTaken: "36", TotalNoOfWorkOut: "12"));
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "Anulom Vilom1",SecondsOrTimes: '30'), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "KapalBhati1",SecondsOrTimes: '15'), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "Pranayam1",SecondsOrTimes: '12'), YogaModel.YogaTable1);
+    makeYogaEntry(Yoga(Seconds: true, YogaTitle: NetworkDataUrl.defaultGifUrl, YogaImgUrl: "Shwasari1",SecondsOrTimes: '16'), YogaModel.YogaTable1);
 
+
+    readYogaSummaryEntry();
   }
 
   bool scrollListener(ScrollNotification scrollNotification){
@@ -62,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return isLoading?const Scaffold(body:Center()): Scaffold(
       key: scaffoldKey,
       drawer: CustomDrawer(),
       backgroundColor: AppColors.mainColor,
@@ -101,11 +124,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextWidgets.yogaForAllText(),
-                                  InkWell(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>const StartUp())),
-                                      child: HomeScreenContainer.homeScreenContainerInsideStack(),),
-                                  
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: yogaSummaryList.length,
+                                      itemBuilder: (context,index){
+                                      log(yogaSummaryList.length.toString());
+
+                                  return InkWell(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>const StartUp())),
+                                      child: HomeScreenContainer.homeScreenContainerInsideStack(
+                                        urlStr: yogaSummaryList[index].BackImg.toString(),
+                                        upperTxt: yogaSummaryList[index].YogaWorkOutName.toString(),
+                                        lowerTxt: yogaSummaryList[index].TimeTaken.toString()
+                                      ),);
+
+                                  }),
+
                                   
 
+                                  HomeScreenContainer.homeScreenContainerInsideStack(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),
                                   TextWidgets.yogaForAllText(),
                                   HomeScreenContainer.homeScreenContainerInsideStack(),

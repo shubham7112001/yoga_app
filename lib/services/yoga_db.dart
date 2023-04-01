@@ -25,16 +25,17 @@ class YogaDatabase{
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
     final boolType = 'BOOLEAN NOT NULL';
-    final integerType = 'INTEGER NOT NULL';
+    final intType = 'INTEGER NOT NULL';
 
     // id, bool(Seconds), text
 
     await db.execute('''
     CREATE TABLE ${YogaModel.YogaTable1}(
     ${YogaModel.IdName} $idType,
-    ${YogaModel.YogaName} $textType,
+    ${YogaModel.YogaName} $intType,
     ${YogaModel.ImageName} $textType,
-    ${YogaModel.SecondsOrNot} $boolType
+    ${YogaModel.SecondsOrNot} $boolType,
+    ${YogaModel.SecondsOrTimes} $textType
     )
     ''');
 
@@ -43,7 +44,8 @@ class YogaDatabase{
     ${YogaModel.IdName} $idType,
     ${YogaModel.YogaName} $textType,
     ${YogaModel.ImageName} $textType,
-    ${YogaModel.SecondsOrNot} $boolType
+    ${YogaModel.SecondsOrNot} $boolType,
+    ${YogaModel.SecondsOrTimes} $textType
     )
     ''');
 
@@ -52,13 +54,15 @@ class YogaDatabase{
     ${YogaModel.IdName} $idType,
     ${YogaModel.YogaName} $textType,
     ${YogaModel.ImageName} $textType,
-    ${YogaModel.SecondsOrNot} $boolType
+    ${YogaModel.SecondsOrNot} $boolType,
+    ${YogaModel.SecondsOrTimes} $textType
     )
     ''');
 
     await db.execute('''
     CREATE TABLE ${YogaModel.YogaSummary}(
     ${YogaModel.IdName} $idType,
+    // ${YogaModel.YogaKey} $intType,
     ${YogaModel.YogaWorkOutName} $textType,
     ${YogaModel.BackImg} $textType,
     ${YogaModel.TimeTaken} $textType,

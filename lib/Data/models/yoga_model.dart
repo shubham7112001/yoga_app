@@ -7,13 +7,14 @@ class YogaModel{
   static String BackImg = "BackImg";
   static String TimeTaken = "TimeTaken";
   static String TotalNoOfWorkOut = "TotalNoOfWorkOut";
+  static String YogaKey = "yogakey";
 
   static String IdName = "ID";
   static String YogaName = "YogaName";
   static String SecondsOrNot = "SecondsOrNot";
   static String SecondsOrTimes = "SecondsOrTimes";
   static String ImageName = "ImageName";
-  static List<String>? YogaTable1ColumnName = [YogaModel.IdName,YogaModel.YogaName,YogaModel.SecondsOrNot,YogaModel.ImageName];
+  static List<String>? YogaTable1ColumnName = [YogaModel.IdName,YogaModel.YogaName,YogaModel.SecondsOrNot,YogaModel.ImageName,YogaModel.SecondsOrTimes,YogaModel.YogaKey];
 
 }
 
@@ -22,24 +23,29 @@ class Yoga{
   final bool Seconds;
   final String YogaTitle;
   final String YogaImgUrl;
+  final String SecondsOrTimes;
 
   const Yoga({
     this.id,
     required this.Seconds,
     required this.YogaTitle,
-    required this.YogaImgUrl
+    required this.YogaImgUrl,
+    required this.SecondsOrTimes
 });
 
   Yoga copy({
     int? id,
     bool? Seconds,
     String? YogaTitle,
-    String? YogaImgUrl}){
+    String? YogaImgUrl,
+    String? SecondsOrTimes
+  }){
       return Yoga(
         id: id ?? this.id,
         Seconds: Seconds ?? this.Seconds,
         YogaImgUrl: YogaImgUrl ?? this.YogaImgUrl,
-        YogaTitle: YogaTitle ?? this.YogaTitle
+        YogaTitle: YogaTitle ?? this.YogaTitle,
+        SecondsOrTimes: SecondsOrTimes ?? this.SecondsOrTimes,
       );
     }
 
@@ -48,7 +54,8 @@ class Yoga{
       id: json[YogaModel.IdName] as int?,
       Seconds: json[YogaModel.SecondsOrNot] == 1,
       YogaImgUrl: json[YogaModel.ImageName] as String,
-      YogaTitle: json[YogaModel.YogaName] as String
+      YogaTitle: json[YogaModel.YogaName] as String,
+      SecondsOrTimes: json[YogaModel.SecondsOrTimes] as String
       );
     }
 
@@ -57,7 +64,9 @@ class Yoga{
       YogaModel.IdName : id,
       YogaModel.SecondsOrNot : Seconds ? 1 : 0,
       YogaModel.YogaName : YogaTitle,
-      YogaModel.ImageName : YogaImgUrl
+      YogaModel.ImageName : YogaImgUrl,
+      YogaModel.SecondsOrTimes : SecondsOrTimes
        };
     }
 }
+
